@@ -1,0 +1,44 @@
+<h2>Vehicle Monitoring System</h2>
+<div class="container">
+  <!-- Filter dropdowns -->
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <select class="form-control" [(ngModel)]="this.filterByCustomer">
+        <option value="">Customer</option>
+        <option *ngFor="let customer of customers" [value]="customer.id">{{ customer.name }}</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select class="form-control" [(ngModel)]="this.filterByStatus">
+        <option value="">Status</option>
+        <option value="Connected">Connected</option>
+        <option value="Disconnected">Disconnected</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <button class="btn btn-primary" (click)="applyFilters()">Search</button>
+    </div>
+  </div>
+
+  <!-- Grid for displaying vehicles -->
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Status</th>
+            <th>Registration Number</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehicle of filteredVehicles">
+            <td>{{ vehicle.customer.name }}</td>
+            <td>{{ vehicle.status }}</td>
+            <td>{{ vehicle.registrationNumber }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
