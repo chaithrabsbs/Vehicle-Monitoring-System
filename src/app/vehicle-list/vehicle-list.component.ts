@@ -39,7 +39,7 @@ export class VehicleListComponent implements OnInit {
   }
 }
 
-// Function to apply filters
+// Function to get token
 async getToken(): Promise<string> {
   return new Promise((resolve, reject) => {
     this.vehicleService.getToken('admin', 'password').subscribe(
